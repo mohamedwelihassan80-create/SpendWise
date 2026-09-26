@@ -1,0 +1,70 @@
+ h1 {
+    background-color: crimson;
+    color:azure;
+    padding-top: 10px;
+    padding-left: 15px;
+    text-align: center;
+ }
+
+
+ h2 {
+    background-color: purple;
+    color:beige;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    text-align: center;
+ }
+
+
+ p {
+   color: whitesmoke;
+   background-color: brown;
+   padding-left: 15px;
+   text-align: center;
+ }
+
+
+ .add-expense{
+    background-color: white;
+    color: white;
+    padding-left: 15px;
+    text-align: center;
+ }
+
+
+ .your-expenses{
+   padding-left: 15px;
+   color:white;
+   text-align: center;
+ }
+
+
+ #Expense-form{
+   padding-top: 8px;
+   color: gray;
+   
+ }
+
+
+ #expense-name{
+   background-color: deepskyblue;
+   color: white;
+ }
+
+ #amount{
+   background-color: blueviolet;
+   color: bisque;
+ }
+
+
+ #category{
+   background-color: cornflowerblue;
+   color: cornsilk;
+ }
+
+ 
+
+
+
+
+
