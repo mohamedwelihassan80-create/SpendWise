@@ -1,3 +1,36 @@
+# SpendWise - Visual Design Challenge (CSS)
+
+In this iteration, the Budget Tracker was completely transformed from a basic structure into a polished, professional user interface using advanced CSS, focusing heavily on the CSS Box Model and visual hierarchy.
+
+## 🎨 Design Choices
+
+### 1. Color Palette
+A cohesive, modern palette was implemented using CSS variables (`:root`):
+*   **Background:** Soft off-white (`#f4f7f6`) to make the white cards pop.
+*   **Primary Text:** Dark slate (`#2d3748`) for high contrast and readability.
+*   **Accent Color:** Professional Blue (`#3182ce`) used consistently for buttons, focus rings, and inputs.
+*   **Borders:** Light gray (`#e2e8f0`) to define boundaries without being distracting.
+
+### 2. Typography (Google Fonts)
+*   **Poppins** (Semi-bold/Bold) is used for all Headings, Table Headers, and Buttons to create a strong, modern visual hierarchy.
+*   **Inter** (Regular/Medium) is used for all body text, form inputs, and table data for maximum readability.
+
+### 3. The CSS Box Model (Card Layout)
+The page is now organized into distinct visual "cards" (Form, Table, Instructions, and Video). 
+*   `margin` creates breathing room between each section.
+*   `padding` ensures content inside the cards doesn't touch the edges.
+*   `border-radius` (12px) and subtle `box-shadow` give the cards a soft, modern appearance.
+
+### 4. Table & Form Upgrades
+*   **Table:** Features a dark slate header, alternating zebra-stripes for the rows, and rounded outer corners using `overflow: hidden`.
+*   **Form:** Inputs have generous padding, soft borders, and a blue glow when focused. The submit button matches the theme and reacts on hover.
+
+---
+
+
+
+
+
 # Budget Tracker - Week 2 (HTML & CSS)
 
 This project is the Week 2 iteration of the Budget Tracker. Building upon the foundational layout from Week 1, this version introduces structured data tables, an upgraded form with dropdowns, multimedia elements, interactive UI components, and advanced CSS styling.

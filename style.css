@@ -1,124 +1,199 @@
- h1 {
-    background-color: crimson;
-    color:azure;
-    padding-top: 10px;
-    padding-left: 15px;
+/* =========================================
+   1. COLOR PALETTE & GLOBAL SETUP
+   ========================================= */
+:root {
+    --bg-page: #f4f7f6;         /* Soft off-white background */
+    --bg-card: #ffffff;         /* White cards */
+    --text-main: #2d3748;       /* Dark slate for body text */
+    --heading-color: #1a202c;   /* Deep navy for headings */
+    --primary: #3182ce;         /* Blue for buttons and accents */
+    --primary-hover: #2b6cb0;
+    --border-color: #e2e8f0;
+    --table-header: #2d3748;
+}
+
+* {
+    box-sizing: border-box; /* Required for Box Model calculations */
+}
+
+body {
+    background-color: var(--bg-page);
+    font-family: 'Inter', sans-serif; /* Body text font */
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 20px;
+    margin: 0;
+}
+
+/* =========================================
+   2. TYPOGRAPHY & HEADINGS
+   ========================================= */
+h1, h2 {
+    font-family: 'Poppins', sans-serif; /* Heading font */
+    color: var(--heading-color);
     text-align: center;
- }
+    margin-bottom: 15px;
+}
 
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
 
- h2 {
-    background-color: purple;
-    color:beige;
-    padding-left: 15px;
-    padding-bottom: 10px;
+h1 img {
+    border-radius: 8px;
+}
+
+p {
     text-align: center;
- }
-
-
- p {
-   color: whitesmoke;
-   background-color: brown;
-   padding-left: 15px;
-   text-align: center;
- }
-
-
- .add-expense {
-    background-color: white;
-    color: #333333;
-    padding-left: 15px;
-    text-align: center;
- }
-
-
- .your-expenses {
-   padding-left: 15px;
-   color: #222222;
-   text-align: center;
- }
-
-
- #Expense-form {
-   padding-top: 8px;
-   color: gray;
-   
- }
-
-
- #expense-name {
-   background-color: deepskyblue;
-   color: white;
- }
-
- #expense-amount {
-   background-color: blueviolet;
-   color: bisque;
- }
-
-
- #expense-category {
-   background-color: cornflowerblue;
-   color: cornsilk;
- }
-
- table{
-   border-collapse: collapse;
-   width: 100%;
- }
-
- th,td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
- }
-
- th {
-  background-color: crimson;
-  color: white;
- }
-
- tr:nth-child(even) {
-    background-color: #f9f9f9; ;
- }
-
- /* Interactive table hover */
-tr:hover {
-    background-color: #eeeeee;
+    color: #4a5568;
+    margin-bottom: 30px;
 }
 
-/* Advanced CSS selector: descendant */
-.your-expenses td {
-    padding: 10px;
-    color: #222222;
+/* =========================================
+   3. CSS BOX MODEL (Creating the "Cards")
+   ========================================= */
+/* Applies to the Form, Table, Instructions, and Video sections */
+.add-expense, 
+.your-expenses, 
+details, 
+.budget-video {
+    background-color: var(--bg-card);
+    max-width: 850px;
+    margin: 0 auto 30px auto;       /* Margin separates sections */
+    padding: 30px;                  /* Padding inside the cards */
+    border: 1px solid var(--border-color); /* Defines the area */
+    border-radius: 12px;            /* Softer, modern appearance */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-/* Advanced CSS selector: direct child */
-.add-expense > form {
-    padding: 10px;
+/* Fix for the video iframe overflowing the card on mobile */
+.budget-video iframe {
+    max-width: 100%;
+    border-radius: 8px;
 }
 
-/* Advanced CSS selector: negation */
-input:not([type="submit"]) {
-    padding: 8px;
+/* =========================================
+   4. FORM STYLING
+   ========================================= */
+#Expense-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* Advanced CSS selector: focus */
-input:focus {
-    outline: 2px solid blue;
+label {
+    font-weight: 500;
+    color: var(--heading-color);
+    margin-bottom: -5px;
 }
 
-/* Button interaction */
+input, select {
+    width: 100%;
+    padding: 12px;                  /* Proper padding inside inputs */
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Overriding old colors to match the new cohesive palette */
+#expense-name, 
+#expense-amount, 
+#expense-category {
+    background-color: #f8fafc;
+    color: var(--text-main);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2); /* Focus ring */
+}
+
+/* Buttons */
 button {
+    background-color: var(--primary);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+}
+
+/* =========================================
+   5. TABLE STYLING
+   ========================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 8px; /* Rounds the outer edges of the table */
+    overflow: hidden;   /* Keeps header background inside the rounded corners */
+}
+
+caption {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+
+th, td {
+    padding: 12px 15px;             /* Padding inside cells */
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--table-header);
+    color: white;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+
+td {
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tr:hover {
+    background-color: #edf2f7;
+}
+
+/* =========================================
+   6. INTERACTIVE ELEMENTS (Details/Summary)
+   ========================================= */
+details {
     cursor: pointer;
 }
 
+summary {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--heading-color);
+    font-size: 1.1rem;
+}
 
-
-
- 
-
-
-
-
-
+details p {
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--text-main);
+}
