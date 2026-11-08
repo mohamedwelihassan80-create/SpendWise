@@ -34,7 +34,7 @@
 
  .your-expenses {
    padding-left: 15px;
-   color:white;
+   color: #222222;
    text-align: center;
  }
 
@@ -90,6 +90,7 @@ tr:hover {
 /* Advanced CSS selector: descendant */
 .your-expenses td {
     padding: 10px;
+    color: #222222;
 }
 
 /* Advanced CSS selector: direct child */
