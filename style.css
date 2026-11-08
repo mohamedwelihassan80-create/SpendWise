@@ -24,7 +24,7 @@
  }
 
 
- .add-expense{
+ .add-expense {
     background-color: white;
     color: #333333;
     padding-left: 15px;
@@ -32,35 +32,88 @@
  }
 
 
- .your-expenses{
+ .your-expenses {
    padding-left: 15px;
    color:white;
    text-align: center;
  }
 
 
- #Expense-form{
+ #Expense-form {
    padding-top: 8px;
    color: gray;
    
  }
 
 
- #expense-name{
+ #expense-name {
    background-color: deepskyblue;
    color: white;
  }
 
- #amount{
+ #expense-amount {
    background-color: blueviolet;
    color: bisque;
  }
 
 
- #category{
+ #expense-category {
    background-color: cornflowerblue;
    color: cornsilk;
  }
+
+ table{
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ th,td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+ }
+
+ th {
+  background-color: crimson;
+  color: white;
+ }
+
+ tr:nth-child(even) {
+    background-color: #f9f9f9; ;
+ }
+
+ /* Interactive table hover */
+tr:hover {
+    background-color: #eeeeee;
+}
+
+/* Advanced CSS selector: descendant */
+.your-expenses td {
+    padding: 10px;
+}
+
+/* Advanced CSS selector: direct child */
+.add-expense > form {
+    padding: 10px;
+}
+
+/* Advanced CSS selector: negation */
+input:not([type="submit"]) {
+    padding: 8px;
+}
+
+/* Advanced CSS selector: focus */
+input:focus {
+    outline: 2px solid blue;
+}
+
+/* Button interaction */
+button {
+    cursor: pointer;
+}
+
+
+
 
  
 
