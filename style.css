@@ -56,6 +56,7 @@ p {
    3. CSS BOX MODEL (Creating the "Cards")
    ========================================= */
 /* Applies to the Form, Table, Instructions, and Video sections */
+.page-header,
 .add-expense, 
 .your-expenses, 
 details, 
