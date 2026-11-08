@@ -135,11 +135,21 @@ button:hover {
     background-color: var(--primary-hover);
 }
 
+/* Responsive Table Wrapper */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    /* Optional: Adds a subtle scrollbar on webkit browsers */
+    -webkit-overflow-scrolling: touch; 
+}
+
+
 /* =========================================
    5. TABLE STYLING
    ========================================= */
 table {
     width: 100%;
+    min-width: 500px;
     border-collapse: collapse;
     margin-top: 15px;
     border-radius: 8px; /* Rounds the outer edges of the table */
