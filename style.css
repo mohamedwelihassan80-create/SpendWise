@@ -247,3 +247,65 @@ h1, h2, h3 {
 
     .main-content { padding: 15px; }
 }
+
+
+/* =========================================
+   WEEK 6 INTERACTIVE ADDITIONS
+   ========================================= */
+
+.total-balance {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--brand-color);
+    background: var(--surface-bg);
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.input-section {
+    background-color: var(--surface-card);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.input-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+#expense-form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#expense-form input, 
+#expense-form select {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--surface-bg);
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 150px;
+}
+
+#expense-form button {
+    flex: 0 0 auto;
+}
+
+/* Empty state message */
+.no-expenses {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 40px;
+    background-color: var(--surface-card);
+    border-radius: 12px;
+    border: 1px dashed var(--border-color);
+}

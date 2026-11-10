@@ -1,3 +1,71 @@
+# SpendWise - Interactive Dashboard (Week 6)
+
+This week, SpendWise was transformed from a static visual interface into a fully interactive application using JavaScript. 
+
+## 🚀 Improvements Made This Week
+The application now allows users to type in an expense name, amount, and category into a form. When submitted, the dashboard dynamically updates by creating a new visual card for that expense. The total balance at the top of the page also recalculates automatically. If an expense is over a certain amount, the card displays a warning status. 
+
+## 🧠 How the Concepts Were Used
+
+*   **Conditionals:** Used `if / else` statements in two places. First, to determine if the total balance dropped below zero (changing the text color to red/warning). Second, to assign a dynamic `status` to each card based on the amount spent (e.g., amounts over 10,000 display "High spending!").
+*   **Arrays:** We store all expense records in a single array named `expenses`. Each item in the array is an object containing the `id`, `name`, `amount`, and `category`. 
+*   **Loops:** A `for` loop is used inside `calculateTotalRemaining()` to iterate through the `expenses` array and sum up all the amounts. We also use a `.forEach()` loop to iterate through the array and generate the HTML for every single card on the dashboard.
+*   **DOM Updates:** The `renderDashboard()` function clears the old HTML inside the `#dashboard-cards` container and uses `document.createElement()` and `innerHTML` to inject the new data. `textContent` is used to update the total balance at the top.
+*   **Events:** We use `form.addEventListener('submit', ...)` to listen for the user clicking the "Add Expense" button. This triggers `event.preventDefault()` to stop the page from reloading, collects the input values, pushes the new object to the array, and calls the render function to update the UI.
+
+## 🛠️ Challenges & Resolutions
+*   **Challenge:** When submitting the form, the page was refreshing immediately, losing all data.
+*   **Resolution:** I used `event.preventDefault()` inside the submit event listener to stop the default browser behavior.
+*   **Challenge:** I needed a way to link the form input to the specific card.
+*   **Resolution:** I generated a unique `id` using `Date.now()` when creating the object, ensuring every record is distinct.
+
+
+# SpendWise Dashboard - Week 5(JavaScript Foundation)
+
+This week, SpendWise transitioned from a purely visual interface into an interactive application using JavaScript. The goal was to build the foundational logic for processing budgeting data. 
+
+## 🚀 What SpendWise Does
+SpendWise is a budget tracking dashboard. In this week's iteration, users are prompted to enter their total monthly budget and their total expenses. The application then calculates their remaining balance and outputs a clear, formatted summary to the browser console.
+
+## 🧠 JavaScript Concepts Implemented
+
+### 1. Variables (Storing Application Data)
+Variables are used at the top of the script to store static application data:
+*   `let userName = "Mohamedweli";` (Stores the user's name for personalized messages).
+*   `let currencySymbol = "Ksh";` (Stores the currency format used in the app).
+
+### 2. Collecting User Input
+User input is collected using the built-in browser **`prompt()`** function inside the `startBudgeting()` function. 
+*   We prompt the user for their budget and expenses.
+*   We use `Number()` to convert the string input from the prompt into actual numerical data types so we can do math.
+*   We use `isNaN()` to validate that the user actually typed numbers, preventing calculation errors.
+
+### 3. Performing Calculations
+The core math happens in the `calculateBalance(budget, expenses)` function. It takes the user's inputs and subtracts expenses from the budget to determine the `remainingBalance`. It also uses conditional `if / else` statements to determine if the user is over, under, or exactly on budget.
+
+### 4. Reusable Functions
+The code is organized into three specific, reusable functions to keep it clean and DRY (Don't Repeat Yourself):
+*   `calculateBalance(budget, expenses)`: Handles the subtraction logic.
+*   `formatCurrency(amount)`: Takes a raw number (like 2500) and returns a formatted string (like "Ksh 2,500") so it is readable.
+*   `startBudgeting()`: The main function that triggers the prompts, runs the math, and prints the results.
+
+### 5. Displaying Results
+All final calculations are displayed in the browser's **Developer Console** using `console.log()`. The output is clearly labeled with lines, emojis for status (✅, ⚠️, ❌), and formatted numbers so the user can easily understand their financial standing.
+
+## 🛠️ How to Test It
+1. Open `index.html` in your browser.
+2. Open the Developer Tools Console (`F12` or `Right-Click -> Inspect -> Console`).
+3. A prompt will automatically appear asking for your budget.
+4. Enter a number (e.g., `50000`).
+5. Another prompt will ask for expenses (e.g., `25000`).
+6. Look at the Console tab to see the formatted results!
+*(You can also click the "+ Calculate New Budget" button in the header to run it again).*
+
+
+
+
+
+
 # SpendWise Dashboard Shell - Week 4
 
 This week focused entirely on rebuilding the application's layout using modern CSS architecture. The SpendWise application was transformed into a responsive Dashboard Shell.
@@ -10,7 +78,7 @@ This week focused entirely on rebuilding the application's layout using modern C
 *   **Micro-interactions:** Added 200ms `transform` (translateY) and `box-shadow` animations to the dashboard cards. The animation applies on both `:hover` and keyboard `:focus` (using `tabindex="0"` and `:focus-visible`).
 
 
-# SpendWise - Visual Design Challenge (CSS)
+# SpendWise - Visual Design Challenge (CSS)- Week 3
 
 In this iteration, the Budget Tracker was completely transformed from a basic structure into a polished, professional user interface using advanced CSS, focusing heavily on the CSS Box Model and visual hierarchy.
 
