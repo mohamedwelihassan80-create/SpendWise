@@ -3,10 +3,21 @@
  */
 
 // =========================================
-// 1. ARRAYS & STATE (Work with Multiple Records)
+// 1. COLLECT USER INPUT & STATE
 // =========================================
-// We store our starting balance and an array of expense objects
-let totalBudget = 50000; 
+// Ask the user for their budget using a prompt
+let budgetInput = prompt("Welcome to SpendWise! What is your total monthly budget (in Ksh)?", "50000");
+
+// Convert the string input to a number
+let totalBudget = parseFloat(budgetInput);
+
+// If the user types a word or clicks cancel, default to 50,000
+if (isNaN(totalBudget) || totalBudget <= 0) {
+    totalBudget = 50000;
+    alert("Invalid input. We have set your budget to Ksh 50,000.");
+}
+
+// We store our array of expense objects
 let expenses = [
     { id: 1, name: "Groceries", amount: 12000, category: "Food" },
     { id: 2, name: "Matatu fare", amount: 3500, category: "Transport" },
@@ -39,7 +50,12 @@ function calculateTotalRemaining() {
         totalSpent += expenses[i].amount;
     }
     
-    return totalBudget - totalSpent;
+    let remaining = totalBudget - totalSpent;
+    
+    // 👇 LOG THE REMAINING BALANCE TO THE CONSOLE 👇
+    console.log(`💰 Current Remaining Balance: Ksh ${remaining.toLocaleString()}`);
+    
+    return remaining;
 }
 
 /**
@@ -140,7 +156,7 @@ form.addEventListener('submit', function(event) {
     // Clear the form inputs
     form.reset();
     
-    // Update the UI to show the new data
+    // Update the UI to show the new data (this also triggers the console log)
     renderDashboard();
     
     // Optional console log to show the array updating
