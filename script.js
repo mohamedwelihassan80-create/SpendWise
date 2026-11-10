@@ -52,7 +52,7 @@ function calculateTotalRemaining() {
     
     let remaining = totalBudget - totalSpent;
     
-    // 👇 LOG THE REMAINING BALANCE TO THE CONSOLE 👇
+    // LOG THE REMAINING BALANCE TO THE CONSOLE
     console.log(`💰 Current Remaining Balance: Ksh ${remaining.toLocaleString()}`);
     
     return remaining;
@@ -87,7 +87,7 @@ function renderDashboard() {
         // Create the card container
         const card = document.createElement('div');
         card.className = 'card';
-        card.tabIndex = 0; // For keyboard focus accessibility
+        card.tabIndex = 0; 
         
         // Determine emoji based on category
         let icon = "💸";
@@ -109,7 +109,7 @@ function renderDashboard() {
             statusClass = "status-success";
         }
 
-        // Inject the HTML into the card using DOM Manipulation
+        // Inject the HTML into the card (Notice the new Delete button)
         card.innerHTML = `
             <div class="card-header">
                 <h2>${expense.name}</h2>
@@ -117,7 +117,25 @@ function renderDashboard() {
             </div>
             <p class="amount">Ksh ${expense.amount.toLocaleString()}</p>
             <p class="status ${statusClass}">${statusText}</p>
+            
+            <!-- DELETE BUTTON -->
+            <button class="delete-btn" data-id="${expense.id}" style="margin-top: auto; background: #ef4444; color: white; border: none; padding: 8px; border-radius: 6px; cursor: pointer;">
+                Delete
+            </button>
         `;
+        
+        // 👇 ADD EVENT LISTENER FOR THE DELETE BUTTON 👇
+        const deleteBtn = card.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', function() {
+            // Filter out the expense with the matching ID
+            expenses = expenses.filter(function(item) {
+                return item.id !== expense.id;
+            });
+            
+            // Re-render the dashboard to update the UI and balance
+            renderDashboard();
+            console.log(`Expense ${expense.id} deleted.`);
+        });
         
         // Append the new card to the dashboard grid
         dashboardGrid.appendChild(card);
@@ -128,21 +146,17 @@ function renderDashboard() {
 // 4. HANDLE USER INTERACTIONS (Event Listeners)
 // =========================================
 form.addEventListener('submit', function(event) {
-    // Prevent the form from refreshing the page
     event.preventDefault();
     
-    // Collect User Input
     const newName = nameInput.value.trim();
     const newAmount = parseFloat(amountInput.value);
     const newCategory = categoryInput.value;
     
-    // Validation
     if (newName === '' || isNaN(newAmount) || newCategory === '') {
         alert('Please fill out all fields correctly.');
         return;
     }
     
-    // Create a new expense object
     const newExpense = {
         id: Date.now(), // Generate a unique ID using the current timestamp
         name: newName,
@@ -150,21 +164,13 @@ form.addEventListener('submit', function(event) {
         category: newCategory
     };
     
-    // Add the new record to our array
     expenses.push(newExpense);
-    
-    // Clear the form inputs
     form.reset();
-    
-    // Update the UI to show the new data (this also triggers the console log)
     renderDashboard();
-    
-    // Optional console log to show the array updating
     console.log("Expense Added. Current Array:", expenses);
 });
 
 // =========================================
 // 5. INITIALIZE APP
 // =========================================
-// Run the render function as soon as the page loads
 renderDashboard();
