@@ -224,8 +224,17 @@ h1, h2, h3 {
     .nav-menu {
         flex-direction: row;
         overflow-x: auto;
-        padding-bottom: 5px; /* Prevents scrollbar from cutting off text */
-        flex-grow: 1;        /* 👇 ADDED: Forces nav to take remaining space */
+        padding-bottom: 5px;
+        flex-grow: 1;
+        
+        /* 👇 ADD THESE TWO LINES TO HIDE THE SCROLLBAR 👇 */
+        scrollbar-width: none; /* Hides scrollbar in Firefox */
+        -webkit-overflow-scrolling: touch; /* Adds smooth momentum scrolling on iOS */
+    }
+
+    /* Hides scrollbar in Chrome, Safari, and Edge */
+    .nav-menu::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-item { white-space: nowrap; }
