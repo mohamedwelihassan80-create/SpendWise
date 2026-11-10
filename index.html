@@ -1,152 +1,118 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet" type="text/css">
-
+    <title>SpendWise Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-    
-    
-    <title>SpendWise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
+<body>
 
- <body>
+    <div class="dashboard-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="logo.jpg" alt="SpendWise Logo" width="30">
+                SpendWise
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <span class="icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">💸</span> Transactions
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">📈</span> Reports
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="icon">⚙️</span> Settings
+                </a>
+            </nav>
+        </aside>
 
-    <!-- Main heading and logo wrapped in a card container -->
-    <header class="page-header">
-        <h1>
-            <img src="logo.jpg" alt="SpendWise Logo" width="50">
-            My Budget Tracker
-        </h1>
-        <p>Track income and expenses in one place</p>
-    </header>
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- HEADER -->
+            <header class="header">
+                <div class="header-title">
+                    <h1>Overview</h1>
+                    <p>Welcome back, Mohamedweli</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-primary">+ Add Expense</button>
+                </div>
+            </header>
 
-    <!-- Add Expense Form -->
-    <section class="add-expense">
-        <h2>Add New Expense</h2>
+            <!-- DASHBOARD GRID -->
+            <section class="dashboard-grid">
+                <!-- Card 1 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Food</h2>
+                        <span class="icon">🍔</span>
+                    </div>
+                    <p class="amount">Ksh 12,400</p>
+                    <p class="status status-warning">+ 12% from last month</p>
+                </div>
 
-        <form id="Expense-form">
+                <!-- Card 2 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Transport</h2>
+                        <span class="icon">🚗</span>
+                    </div>
+                    <p class="amount">Ksh 4,200</p>
+                    <p class="status status-success">- 5% from last month</p>
+                </div>
 
-            <label for="expense-name">Expense name</label>
-            <input
-                type="text"
-                id="expense-name"
-                name="expense-name"
-                placeholder="Write expense name here"
-            >
+                <!-- Card 3 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Rent</h2>
+                        <span class="icon">🏠</span>
+                    </div>
+                    <p class="amount">Ksh 25,000</p>
+                    <p class="status">Fixed monthly cost</p>
+                </div>
 
-            <label for="expense-amount">Amount</label>
-            <input
-                type="number"
-                id="expense-amount"
-                name="expense-amount"
-                placeholder="Enter amount here"
-            >
+                <!-- Card 4 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Entertainment</h2>
+                        <span class="icon">🍿</span>
+                    </div>
+                    <p class="amount">Ksh 3,500</p>
+                    <p class="status status-warning">+ 2% from last month</p>
+                </div>
 
-            <label for="expense-category">Category</label>
-            <select id="expense-category" name="expense-category">
-                <option value="Food">Food</option>
-                <option value="Transport">Transport</option>
-                <option value="Rent">Rent</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Other">Other</option>
-            </select>
+                <!-- Card 5 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Savings</h2>
+                        <span class="icon">💰</span>
+                    </div>
+                    <p class="amount">Ksh 15,000</p>
+                    <p class="status status-success">Target: Ksh 20,000</p>
+                </div>
 
-            <button type="button">Add Expense</button>
-
-        </form>
-    </section>
-
-    <!-- Expenses Table -->
-    <section class="your-expenses">
-
-        <h2>Your Expenses</h2>
-         <div class="table-wrapper">
-        <table>
-              <caption>List of recent expenses</caption>
-
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>Biscuits</td>
-                    <td>Ksh 220</td>
-                    <td>Food</td>
-                    <td>20/9/2026</td>
-                </tr>
-
-                <tr>
-                    <td>Water payment</td>
-                    <td>Ksh 1000</td>
-                    <td>Other</td>
-                    <td>21/8/2026</td>
-                </tr>
-
-                <tr>
-                    <td>Maisha Magic</td>
-                    <td>Ksh 100</td>
-                    <td>Entertainment</td>
-                    <td>26/9/2026</td>
-                </tr>
-
-                <tr>
-                    <td>Airfare</td>
-                    <td>Ksh 7500</td>
-                    <td>Transport</td>
-                    <td>20/7/2026</td>
-                </tr>
-
-                <tr>
-                    <td>Tuition</td>
-                    <td>Ksh 5000</td>
-                    <td>Other</td>
-                    <td>22/1/2026</td>
-                </tr>
-            </tbody>
-        </table>
+                <!-- Card 6 -->
+                <div class="card" tabindex="0">
+                    <div class="card-header">
+                        <h2>Utilities</h2>
+                        <span class="icon">💡</span>
+                    </div>
+                    <p class="amount">Ksh 5,800</p>
+                    <p class="status">Water & Electricity</p>
+                </div>
+            </section>
+        </main>
     </div>
-    
 
-    </section>
-
-    <!-- Instructions using details and summary -->
-    <details>
-        <summary>How to use this tracker</summary>
-
-        <p>
-            Enter the name of your expense, the amount spent,
-            and select a category using the form above.
-            The expense table displays sample recorded expenses.
-        </p>
-    </details>
-
-    <!-- Budgeting Video -->
-    <section class="budget-video">
-
-    <h2>Budgeting Tips</h2>
-
-    <iframe
-        width="834"
-        height="469"
-        src="https://www.youtube.com/embed/-bqeNE1DOzA"
-        title="START BUDGETING with Little Money (10 Easy Tips for 2026)"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-    </iframe>
-
-</section>
 </body>
 </html>

@@ -1,3 +1,15 @@
+# SpendWise Dashboard Shell - Week 4
+
+This week focused entirely on rebuilding the application's layout using modern CSS architecture. The SpendWise application was transformed into a responsive Dashboard Shell.
+
+## 🚀 Features Built in This Version
+
+*   **Layout (CSS Grid & Flexbox):** Built a Sidebar, Header, and a 6-card grid. Used CSS Grid for the macro layout (Sidebar + Main Content) and the responsive card grid (`repeat(auto-fit, minmax(280px, 1fr))`). Used Flexbox for internal alignment of navigation items, headers, and card content. No absolute positioning was used.
+*   **Theming (CSS Variables):** Defined Brand Color, Accent Color, Surface, Primary Text, and Secondary Text in `:root`. **Stretch Goal Achieved:** Implemented a complete Dark Theme using `@media (prefers-color-scheme: dark)` which only overrides the `:root` variables.
+*   **Responsive Design:** Added a `768px` media query. On smaller screens, the grid collapses to a single column, the sidebar becomes a top nav, and the header stacks vertically.
+*   **Micro-interactions:** Added 200ms `transform` (translateY) and `box-shadow` animations to the dashboard cards. The animation applies on both `:hover` and keyboard `:focus` (using `tabindex="0"` and `:focus-visible`).
+
+
 # SpendWise - Visual Design Challenge (CSS)
 
 In this iteration, the Budget Tracker was completely transformed from a basic structure into a polished, professional user interface using advanced CSS, focusing heavily on the CSS Box Model and visual hierarchy.

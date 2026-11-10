@@ -1,210 +1,229 @@
 /* =========================================
-   1. COLOR PALETTE & GLOBAL SETUP
+   THEME VARIABLES (Stretch Goal: Dark Mode)
    ========================================= */
 :root {
-    --bg-page: #f4f7f6;         /* Soft off-white background */
-    --bg-card: #ffffff;         /* White cards */
-    --text-main: #2d3748;       /* Dark slate for body text */
-    --heading-color: #1a202c;   /* Deep navy for headings */
-    --primary: #3182ce;         /* Blue for buttons and accents */
-    --primary-hover: #2b6cb0;
+    --brand-color: #3182ce;
+    --accent-color: #0ea5e9;
+    --surface-bg: #f4f7f6;
+    --surface-card: #ffffff;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
     --border-color: #e2e8f0;
-    --table-header: #2d3748;
+    --success: #38a169;
+    --warning: #dd6b20;
+    --transition-speed: 200ms;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand-color: #63b3ed;
+        --accent-color: #38bdf8;
+        --surface-bg: #0f172a;
+        --surface-card: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --border-color: #334155;
+    }
+}
+
+/* =========================================
+   GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
 * {
-    box-sizing: border-box; /* Required for Box Model calculations */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--bg-page);
-    font-family: 'Inter', sans-serif; /* Body text font */
-    color: var(--text-main);
-    line-height: 1.6;
-    padding: 20px;
-    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--surface-bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background-color 0.3s ease;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 /* =========================================
-   2. TYPOGRAPHY & HEADINGS
+   CSS GRID (Overall Layout)
    ========================================= */
-h1, h2 {
-    font-family: 'Poppins', sans-serif; /* Heading font */
-    color: var(--heading-color);
-    text-align: center;
-    margin-bottom: 15px;
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar + Main */
+    min-height: 100vh;
 }
 
-h1 {
+/* =========================================
+   FLEXBOX: SIDEBAR
+   ========================================= */
+.sidebar {
+    background-color: var(--surface-card);
+    border-right: 1px solid var(--border-color);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.brand {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--brand-color);
+}
+
+.brand img { border-radius: 8px; }
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-h1 img {
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
     border-radius: 8px;
+    transition: all var(--transition-speed) ease;
 }
 
-p {
-    text-align: center;
-    color: #4a5568;
-    margin-bottom: 30px;
+.nav-item:hover, .nav-item.active {
+    background-color: var(--brand-color);
+    color: white;
 }
 
 /* =========================================
-   3. CSS BOX MODEL (Creating the "Cards")
+   FLEXBOX: MAIN CONTENT & HEADER
    ========================================= */
-/* Applies to the Form, Table, Instructions, and Video sections */
-.page-header,
-.add-expense, 
-.your-expenses, 
-details, 
-.budget-video {
-    background-color: var(--bg-card);
-    max-width: 850px;
-    margin: 0 auto 30px auto;       /* Margin separates sections */
-    padding: 30px;                  /* Padding inside the cards */
-    border: 1px solid var(--border-color); /* Defines the area */
-    border-radius: 12px;            /* Softer, modern appearance */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-/* Fix for the video iframe overflowing the card on mobile */
-.budget-video iframe {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-/* =========================================
-   4. FORM STYLING
-   ========================================= */
-#Expense-form {
+.main-content {
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 30px;
 }
 
-label {
-    font-weight: 500;
-    color: var(--heading-color);
-    margin-bottom: -5px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface-card);
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
 }
 
-input, select {
-    width: 100%;
-    padding: 12px;                  /* Proper padding inside inputs */
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-}
+.header-title h1 { font-size: 1.5rem; }
+.header-title p { color: var(--text-secondary); font-size: 0.9rem; }
 
-/* Overriding old colors to match the new cohesive palette */
-#expense-name, 
-#expense-amount, 
-#expense-category {
-    background-color: #f8fafc;
-    color: var(--text-main);
-}
-
-input:focus, select:focus {
-    outline: none;
-    border-color: var(--primary);
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2); /* Focus ring */
-}
-
-/* Buttons */
-button {
-    background-color: var(--primary);
+.btn-primary {
+    background-color: var(--brand-color);
     color: white;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 14px;
     border: none;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-speed) ease;
 }
 
-button:hover {
-    background-color: var(--primary-hover);
-}
-
-/* Responsive Table Wrapper */
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    /* Optional: Adds a subtle scrollbar on webkit browsers */
-    -webkit-overflow-scrolling: touch; 
-}
-
+.btn-primary:hover { background-color: var(--accent-color); }
 
 /* =========================================
-   5. TABLE STYLING
+   CSS GRID: 6 DASHBOARD CARDS
    ========================================= */
-table {
-    width: 100%;
-    min-width: 500px;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border-radius: 8px; /* Rounds the outer edges of the table */
-    overflow: hidden;   /* Keeps header background inside the rounded corners */
-}
-
-caption {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    color: var(--heading-color);
-}
-
-th, td {
-    padding: 12px 15px;             /* Padding inside cells */
-    border-bottom: 1px solid var(--border-color);
-}
-
-th {
-    background-color: var(--table-header);
-    color: white;
-    text-align: left;
-    font-family: 'Poppins', sans-serif;
-}
-
-td {
-    text-align: left;
-}
-
-tr:nth-child(even) {
-    background-color: #f8fafc;
-}
-
-tr:hover {
-    background-color: #edf2f7;
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 /* =========================================
-   6. INTERACTIVE ELEMENTS (Details/Summary)
+   FLEXBOX & MICRO-INTERACTIONS: CARDS
    ========================================= */
-details {
-    cursor: pointer;
+.card {
+    background-color: var(--surface-card);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
-summary {
+/* 250ms Hover & Focus Animations */
+.card:hover, 
+.card:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: var(--brand-color);
+    outline: none;
+}
+
+.card:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h2 { font-size: 1.1rem; color: var(--text-secondary); }
+.card-header .icon { font-size: 1.5rem; }
+
+.amount {
+    font-size: 2rem;
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: var(--heading-color);
-    font-size: 1.1rem;
+    font-weight: 700;
 }
 
-details p {
-    text-align: left;
-    margin-top: 15px;
-    margin-bottom: 0;
-    color: var(--text-main);
+.status { font-size: 0.85rem; color: var(--text-secondary); }
+.status-success { color: var(--success); }
+.status-warning { color: var(--warning); }
+
+/* =========================================
+   RESPONSIVE DESIGN (Under 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Single-column layout */
+    .dashboard-container {
+        grid-template-columns: 1fr; 
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 15px;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .nav-item { white-space: nowrap; }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .main-content { padding: 15px; }
 }
